@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource-variable/roboto-flex';
+import '@fontsource/pt-sans-narrow';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
