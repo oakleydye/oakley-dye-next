@@ -214,7 +214,7 @@ const ContactPage: React.FC = () => {
                     <Phone className="w-6 h-6 text-primary mr-3" />
                     <div className="text-left">
                       <p className="font-semibold">Call Us</p>
-                      <p className="text-sm text-muted-foreground">(555) 123-4567</p>
+                      <p className="text-sm text-muted-foreground">(435) 557-1427</p>
                     </div>
                   </div>
                 </Card>
