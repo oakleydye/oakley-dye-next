@@ -20,7 +20,7 @@ const ContactSection: React.FC = () => {
     {
       icon: <Phone className="w-5 h-5 text-primary" />,
       label: "Phone",
-      value: "(555) 123-4567",
+      value: "(435) 557-1427",
       href: "tel:+14355571427"
     },
     {
