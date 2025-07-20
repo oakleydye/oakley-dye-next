@@ -1,9 +1,11 @@
 "use client";
 
-import { TextField } from "@mui/material";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import * as React from "react";
 import CustomButton from "./custom_button";
-import { enqueueSnackbar } from "notistack";
+import { toast } from "sonner";
 import { IContactFormSubmission } from "@/types/contact_form_submission";
 
 const ContactForm: React.FC = () => {
@@ -42,24 +44,16 @@ const ContactForm: React.FC = () => {
             setEmail("");
             setPhone("");
             setMessage("");
-            enqueueSnackbar("Email Sent Successfully!", {
-              variant: "success",
-            });
+            toast.success("Email Sent Successfully!");
           } else {
-            enqueueSnackbar(
-              "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible.",
-              {
-                variant: "error",
-              }
+            toast.error(
+              "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible."
             );
           }
         })
         .catch(() => {
-          enqueueSnackbar(
-            "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible.",
-            {
-              variant: "error",
-            }
+          toast.error(
+            "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible."
           );
         });
     })();
@@ -67,61 +61,75 @@ const ContactForm: React.FC = () => {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit} style={{ margin: "1rem", padding: "1rem" }}>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <TextField
-            label="First Name"
-            variant="filled"
-            fullWidth
+      <form onSubmit={handleSubmit} className="m-4 p-4">
+        <div className="flex flex-row gap-2 mb-4">
+          <div className="flex-1">
+            <Label htmlFor="firstName" className="mb-2 block">
+              First Name
+            </Label>
+            <Input
+              id="firstName"
+              placeholder="First Name"
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="flex-1">
+            <Label htmlFor="lastName" className="mb-2 block">
+              Last Name
+            </Label>
+            <Input
+              id="lastName"
+              placeholder="Last Name"
+              required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row gap-2 mb-4">
+          <div className="flex-1">
+            <Label htmlFor="email" className="mb-2 block">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="flex-1">
+            <Label htmlFor="phone" className="mb-2 block">
+              Phone #
+            </Label>
+            <Input
+              id="phone"
+              type="tel"
+              placeholder="Phone #"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="mb-4">
+          <Label htmlFor="message" className="mb-2 block">
+            Message
+          </Label>
+          <Textarea
+            id="message"
+            placeholder="Message"
             required
-            sx={{ mr: "0.5rem", mb: "1rem" }}
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <TextField
-            label="Last Name"
-            variant="filled"
-            fullWidth
-            required
-            sx={{ ml: "0.5rem", mb: "1rem" }}
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            rows={4}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           />
         </div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <TextField
-            label="Email"
-            variant="filled"
-            fullWidth
-            required
-            sx={{ mb: "1rem", mr: "0.5rem" }}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            label="Phone #"
-            variant="filled"
-            fullWidth
-            sx={{ mb: "1rem", ml: "0.5rem" }}
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <TextField
-          label="Message"
-          variant="filled"
-          required
-          multiline
-          rows={4}
-          fullWidth
-          sx={{ mb: "1rem" }}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <CustomButton type="submit" variant="contained" color="primary">
-            Submit
-          </CustomButton>
+        <div className="flex justify-end">
+          <CustomButton type="submit">Submit</CustomButton>
         </div>
       </form>
     </React.Fragment>
