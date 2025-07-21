@@ -77,40 +77,52 @@ const Hero: React.FC = () => {
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full"
         />
-        <div className="w-3/5 pr-12 z-10">
-          <h1
-            className={`${
-              isMobile ? "text-4xl" : "text-6xl"
-            } font-bold mb-6 ${
-              isMobile ? "text-center" : "text-left"
-            } leading-tight`}
-          >
-            Your Vision, Our{" "}
-            <span className="inline-block word-fade">
-              {words[currentWord]}
-            </span>
-          </h1>
-          <div className="mt-8">
-            <CustomButton>Get Started</CustomButton>
+        
+        {isMobile ? (
+          // Mobile layout: Content in a card, no image
+          <div className="z-10 max-w-md w-full">
+            <div className="bg-card/90 backdrop-blur-sm border border-border rounded-lg p-8 shadow-lg">
+              <h1 className="text-4xl font-bold mb-6 text-center leading-tight">
+                Your Vision, Our{" "}
+                <span className="inline-block word-fade text-accent-foreground">
+                  {words[currentWord]}
+                </span>
+              </h1>
+              <p className="text-muted-foreground text-center mb-8 text-lg">
+                Transform your ideas into reality with our expert development and consulting services.
+              </p>
+              <div className="flex justify-center">
+                <CustomButton>Get Started</CustomButton>
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          // Desktop layout: Original design with image
+          <>
+            <div className="w-3/5 pr-12 z-10">
+              <h1 className="text-6xl font-bold mb-6 text-left leading-tight">
+                Your Vision, Our{" "}
+                <span className="inline-block word-fade">
+                  {words[currentWord]}
+                </span>
+              </h1>
+              <div className="mt-8">
+                <CustomButton>Get Started</CustomButton>
+              </div>
+            </div>
 
-        <div
-          className={`${isMobile ? "w-full" : "w-2/5"} h-screen ${
-            isMobile ? "mt-2" : ""
-          } relative`}
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center-right"
-            style={{
-              backgroundImage: "url(/images/hero.webp)",
-              clipPath: isMobile
-                ? undefined
-                : "polygon(0 0, 100% 0, 100% 100%, 15% 100%)",
-              right: isMobile ? "0" : "-15%",
-            }}
-          />
-        </div>
+            <div className="w-2/5 h-screen relative">
+              <div
+                className="absolute inset-0 bg-cover bg-center-right"
+                style={{
+                  backgroundImage: "url(/images/hero.webp)",
+                  clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)",
+                  right: "-15%",
+                }}
+              />
+            </div>
+          </>
+        )}
       </div>
     </React.Fragment>
   );
