@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
         ) : (
           // Desktop layout: Original design with image
           <>
-            <div className="w-3/5 pr-12 z-10">
+            <div className="w-3/5 pr-12 z-10 pl-12">
               <h1 className="text-6xl font-bold mb-6 text-left leading-tight">
                 Your Vision, Our{" "}
                 <span className="inline-block word-fade">
@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center-right"
                 style={{
-                  backgroundImage: "url(/images/hero.webp)",
+                  backgroundImage: "url(/images/banner.jpg)",
                   clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)",
                   right: "-15%",
                 }}
