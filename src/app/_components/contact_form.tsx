@@ -27,35 +27,39 @@ const ContactForm: React.FC = () => {
     };
 
     (async () => {
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subject: `Contact Form Submission from ${firstName} ${lastName}`,
-          message: JSON.stringify(data, null, 2),
-        }),
-      })
-        .then((response) => {
-          if (response) {
-            setFirstName("");
-            setLastName("");
-            setEmail("");
-            setPhone("");
-            setMessage("");
-            toast.success("Email Sent Successfully!");
-          } else {
-            toast.error(
-              "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible."
-            );
-          }
-        })
-        .catch(() => {
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subject: `Contact Form Submission from ${firstName} ${lastName}`,
+            message: JSON.stringify(data, null, 2),
+          }),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          toast.success("Email Sent Successfully!");
+        } else {
+          const errorData = await response.json();
+          console.error("Failed to send email:", errorData);
           toast.error(
             "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible."
           );
-        });
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        toast.error(
+          "Failed to send email. Please call or email us directly and we'll get back to you as soon as possible."
+        );
+      }
     })();
   };
 
