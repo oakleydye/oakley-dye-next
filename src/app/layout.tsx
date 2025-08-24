@@ -9,6 +9,7 @@ import { generateSEOMetadata, businessStructuredData } from "@/lib/seo";
 import '@fontsource-variable/jetbrains-mono';
 import '@fontsource-variable/roboto-flex';
 import '@fontsource/pt-sans-narrow';
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Analytics />
         <GoogleAnalytics />
         <Providers>
           <Menu />
