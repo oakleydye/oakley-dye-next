@@ -49,8 +49,21 @@ export const portfolioData = [
     technologies: ["Next.js", "ShadCN", "Vercel"],
     features: ["Responsive Design", "Service Booking", "Contact Forms", "Customer Testimonials"],
     year: "2024",
-    status: "In Development"
+    status: "Live"
   },
+  {
+    id: 5,
+    name: "Kristina Eck Real Estate",
+    description: "Real Estate Agent Portfolio & Listings",
+    fullDescription: "A professional portfolio website for a real estate agent, featuring property listings, agent biography, and contact information. Designed to provide a seamless experience for potential clients searching for properties.",
+    link: "https://kristinaeck.oakleydye.com",
+    image: "/images/portfolio/kristinaeck.webp",
+    category: "Web Development",
+    technologies: ["Next.js", "Tailwind CSS", "React"],
+    features: ["Property Listings", "Agent Bio", "Contact Forms", "Mobile Responsive", "Custom API Integration"],
+    year: "2026",
+    status: "In Development"
+  }
 ];
 
 export const portfolioCategories = [
