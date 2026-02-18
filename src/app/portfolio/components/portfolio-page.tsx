@@ -6,8 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import CustomButton from "@/app/_components/custom_button";
 import { portfolioData, portfolioCategories } from "@/lib/portfolio_data";
-import { ExternalLink, Github, Eye, Calendar, Zap, CheckCircle, ImageIcon } from "lucide-react";
-import Image from "next/image";
+import { ExternalLink, Calendar, Zap, CheckCircle } from "lucide-react";
 
 type ProjectType = {
   id: number;
@@ -53,13 +52,16 @@ const PortfolioPage: React.FC = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Live":
-        return "text-green-600 bg-green-100";
+        return "text-green-400 bg-green-400/10 border border-green-400/20";
       case "In Development":
-        return "text-blue-600 bg-blue-100";
+        return "text-blue-400 bg-blue-400/10 border border-blue-400/20";
       case "Demo":
-        return "text-orange-600 bg-orange-100";
+        return "text-orange-400 bg-orange-400/10 border border-orange-400/20";
+      case "Cancelled":
+      case "Decommissioned":
+        return "text-zinc-400 bg-zinc-400/10 border border-zinc-400/20";
       default:
-        return "text-gray-600 bg-gray-100";
+        return "text-muted-foreground bg-muted border border-glass-border";
     }
   };
 
@@ -77,21 +79,16 @@ const PortfolioPage: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
-                {hasValidImage(project) ? (
-                  <img 
-                    src={project.image} 
+              {hasValidImage(project) && (
+                <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg mb-4 overflow-hidden relative">
+                  <img
+                    src={project.image}
                     alt={`${project.name} screenshot`}
                     className="w-full h-full object-cover"
                     onError={() => handleImageError(project.id)}
                   />
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-primary/50">
-                    <ImageIcon className="w-16 h-16 mb-2" />
-                    <span className="text-sm">Project Preview</span>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
               
               <div className="space-y-4">
                 <div>
@@ -167,7 +164,7 @@ const PortfolioPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-background via-background to-primary/5">
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-12 pb-8">
         <div className="text-center mb-12">
@@ -202,32 +199,34 @@ const PortfolioPage: React.FC = () => {
               className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border-0 bg-background/80 backdrop-blur"
               onClick={() => setSelectedProject(project)}
             >
-              <CardHeader className="p-0">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center relative overflow-hidden">
-                  {hasValidImage(project) ? (
-                    <img 
-                      src={project.image} 
+              {hasValidImage(project) && (
+                <CardHeader className="p-0">
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center relative overflow-hidden">
+                    <img
+                      src={project.image}
                       alt={`${project.name} screenshot`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       onError={() => handleImageError(project.id)}
                     />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center text-primary/50 group-hover:scale-110 transition-transform duration-300">
-                      <ImageIcon className="w-12 h-12 mb-2" />
-                      <span className="text-xs">Preview</span>
+                    <div className="absolute top-4 right-4 z-20">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
+                        {project.status}
+                      </span>
                     </div>
-                  )}
-                  <div className="absolute top-4 right-4 z-20">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
+                  </div>
+                </CardHeader>
+              )}
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {project.name}
+                  </CardTitle>
+                  {!hasValidImage(project) && (
+                    <span className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
                       {project.status}
                     </span>
-                  </div>
+                  )}
                 </div>
-              </CardHeader>
-              <CardContent className="p-6">
-                <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
-                  {project.name}
-                </CardTitle>
                 <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">

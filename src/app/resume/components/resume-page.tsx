@@ -5,15 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { 
-  Download, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Github, 
-  Linkedin,
-  Calendar,
+import {
+  Download,
+  Mail,
+  Phone,
+  MapPin,
   Code2,
   Briefcase,
   GraduationCap,
@@ -21,13 +17,16 @@ import {
   Zap,
   Users,
   TrendingUp,
-  ExternalLink
+  ExternalLink,
+  Globe,
 } from "lucide-react";
 import * as React from "react";
+import { portfolioData, portfolioCategories } from "@/lib/portfolio_data";
 
 const ResumePageComponent: React.FC = () => {
   const isMobile = useIsMobile();
   const [activeSection, setActiveSection] = React.useState("overview");
+  const [activeCategory, setActiveCategory] = React.useState("All");
 
   const personalInfo = {
     name: "Oakley Dye",
@@ -62,8 +61,22 @@ const ResumePageComponent: React.FC = () => {
   const experience = [
     {
       company: "Conservice",
+      position: "Engineering Manager",
+      duration: "Dec 2025 - Present",
+      location: "Hyrum, UT",
+      type: "Full-time",
+      achievements: [
+        "Leading the enabling team consisting of 5 engineers in the development of scalable software solutions for utility management",
+        "Driving the adoption of modern technologies and best practices across the engineering organization",
+        "Collaborating with cross-functional teams to align engineering efforts with business goals",
+        "Mentoring and developing engineering talent to foster growth and innovation"
+      ],
+      technologies: ["React", "Next.js", ".NET", "PostgreSQL", "Azure Service Bus", "Docker"]
+    },
+    {
+      company: "Conservice",
       position: "Senior Software Engineer",
-      duration: "Jan 2024 - Present",
+      duration: "Jan 2024 - Dec 2025",
       location: "Hyrum, UT",
       type: "Full-time",
       achievements: [
@@ -170,37 +183,16 @@ const ResumePageComponent: React.FC = () => {
     { name: "Performance Tuning", issuer: "Brent Ozar", year: "2021" },
   ];
 
-  const projects = [
-    {
-      name: "AI Data Extraction Pipeline",
-      description: "Automated bill data extraction and processing pipeline by utilizing AI and generic data templates.",
-      technologies: ["Next.js", ".NET", "PostgreSQL", "Azure Service Bus", "Kodexa AI"],
-      impact: "Decreased manual data entry time and reduced document processing costs."
-    },
-    {
-      name: "Data Mapping Automation",
-      description: "Created a workflow automation tool that maps data from various sources to a unified format, reducing manual data entry.",
-      technologies: ["React", ".NET", "SQL Server", "PostgreSQL", "GraphQL"],
-      impact: "Reduced manual data entry time, increased user capacity, and improved data accuracy."
-    },
-    {
-      name: "Legal Request Dashboard",
-      description: "Created a platform for operations users to interact with legal department, streamlining request management and tracking.",
-      technologies: [".NET", "SQL Server", "WPF"],
-      impact: "Improved request processing time and enhanced collaboration between departments."
-    }
-  ];
-
   const sectionTabs = [
     { id: "overview", label: "Overview", icon: <Users className="w-4 h-4" /> },
     { id: "experience", label: "Experience", icon: <Briefcase className="w-4 h-4" /> },
     { id: "skills", label: "Skills", icon: <Code2 className="w-4 h-4" /> },
-    { id: "projects", label: "Projects", icon: <Zap className="w-4 h-4" /> },
-    { id: "education", label: "Education", icon: <GraduationCap className="w-4 h-4" /> }
+    { id: "projects", label: "Projects", icon: <Zap className="w-4 h-4" /> }
+    // { id: "education", label: "Education", icon: <GraduationCap className="w-4 h-4" /> }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-background via-background to-primary/5">
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-16 pb-8 max-w-6xl">
         <div className="text-center mb-12">
@@ -404,33 +396,105 @@ const ResumePageComponent: React.FC = () => {
           {/* Projects Section */}
           {activeSection === "projects" && (
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-center text-primary mb-8">Featured Projects</h2>
-              <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                {projects.map((project, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold mb-3 text-primary">{project.name}</h3>
-                      <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="outline" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                      <div className="p-3 bg-primary/5 rounded-lg">
-                        <p className="text-sm font-medium text-primary mb-1">Impact:</p>
-                        <p className="text-xs text-muted-foreground">{project.impact}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+              <h2 className="text-3xl font-bold text-center text-primary mb-8">Projects</h2>
+
+              {/* Category filter */}
+              <div className="flex flex-wrap justify-center gap-2 mb-8">
+                {portfolioCategories.map((cat) => (
+                  <Button
+                    key={cat}
+                    size="sm"
+                    variant={activeCategory === cat ? "default" : "outline"}
+                    onClick={() => setActiveCategory(cat)}
+                    className="text-xs"
+                  >
+                    {cat}
+                  </Button>
                 ))}
               </div>
+
+              <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+                {portfolioData
+                  .filter((p) => activeCategory === "All" || p.category === activeCategory)
+                  .map((project) => {
+                    const statusColor =
+                      project.status === "Live"
+                        ? "text-green-400 border-green-400/30 bg-green-400/10"
+                        : project.status === "In Development"
+                        ? "text-blue-400 border-blue-400/30 bg-blue-400/10"
+                        : project.status === "Demo"
+                        ? "text-orange-400 border-orange-400/30 bg-orange-400/10"
+                        : project.status === "Cancelled" || project.status === "Decommissioned"
+                        ? "text-zinc-400 border-zinc-400/30 bg-zinc-400/10"
+                        : "text-muted-foreground border-glass-border bg-muted";
+
+                    return (
+                      <Card key={project.id} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                        <CardContent className="p-6 flex flex-col flex-1">
+                          {/* Header row */}
+                          <div className="flex items-start justify-between gap-2 mb-3">
+                            <h3 className="text-base font-bold text-primary leading-tight">{project.name}</h3>
+                            <div className="flex flex-col items-end gap-1 shrink-0">
+                              <Badge variant="outline" className={`text-xs ${statusColor}`}>
+                                {project.status}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground">{project.year}</span>
+                            </div>
+                          </div>
+
+                          {/* Category */}
+                          <Badge variant="secondary" className="text-xs w-fit mb-3">
+                            {project.category}
+                          </Badge>
+
+                          <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-1">
+                            {project.fullDescription}
+                          </p>
+
+                          {/* Tech tags */}
+                          <div className="flex flex-wrap gap-1.5 mb-4">
+                            {project.technologies.map((tech, i) => (
+                              <Badge key={i} variant="outline" className="text-xs">
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+
+                          {/* Features / highlights */}
+                          {project.features.length > 0 && (
+                            <div className="p-3 bg-primary/5 rounded-lg mb-4">
+                              <p className="text-xs font-semibold text-primary mb-1.5">Key Features</p>
+                              <ul className="space-y-0.5">
+                                {project.features.map((f, i) => (
+                                  <li key={i} className="text-xs text-muted-foreground flex items-center gap-1.5">
+                                    <span className="w-1 h-1 bg-primary rounded-full flex-shrink-0" />
+                                    {f}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Live link */}
+                          {project.link && project.link !== "#" && (
+                            <Button variant="outline" size="sm" asChild className="w-full border-primary/20 hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+                              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                <Globe className="w-3 h-3 mr-2" />
+                                View Live
+                              </a>
+                            </Button>
+                          )}
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+              </div>
+
               <Card className="text-center">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-4">Want to See More?</h3>
+                  <h3 className="text-xl font-bold mb-4">See the Full Portfolio</h3>
                   <p className="text-muted-foreground mb-6">
-                    Check out my complete portfolio with detailed case studies and live demos.
+                    Browse all projects with images and detailed case studies.
                   </p>
                   <Button asChild>
                     <Link href="/portfolio">
@@ -444,7 +508,7 @@ const ResumePageComponent: React.FC = () => {
           )}
 
           {/* Education Section */}
-          {activeSection === "education" && (
+          {/* {activeSection === "education" && (
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-center text-primary mb-8">Education</h2>
               {education.map((edu, index) => (
@@ -457,9 +521,9 @@ const ResumePageComponent: React.FC = () => {
                       </div>
                       <div className="text-right text-sm text-muted-foreground">
                         {/* <p>{edu.duration}</p> */}
-                        <p>{edu.location}</p>
+                        {/*<p>{edu.location}</p>
                       </div>
-                    </div>
+                    </div>*/}
                     {/* <ul className="space-y-2">
                       {edu.achievements.map((achievement, achievementIndex) => (
                         <li key={achievementIndex} className="flex items-start">
@@ -468,11 +532,11 @@ const ResumePageComponent: React.FC = () => {
                         </li>
                       ))}
                     </ul> */}
-                  </CardContent>
+                  {/*</CardContent>
                 </Card>
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Call to Action */}

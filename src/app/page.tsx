@@ -1,7 +1,9 @@
 import { Fragment } from "react";
 import Hero from "./_components/hero";
+import ServicesSection from "./_components/services_section";
 import AboutSection from "./_components/about";
 import PortfolioSection from "./_components/portfolio";
+import TestimonialsPreview from "./_components/testimonials_preview";
 import ContactSection from "./_components/contact";
 import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
@@ -23,8 +25,10 @@ const Homepage: React.FC = () => {
   return (
     <Fragment>
       <Hero />
+      <ServicesSection />
       <AboutSection />
       <PortfolioSection />
+      {/* <TestimonialsPreview /> */}
       <ContactSection />
     </Fragment>
   );

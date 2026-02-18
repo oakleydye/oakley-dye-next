@@ -13,7 +13,7 @@ const NotFound = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center px-4">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center px-4">
       <div className="container max-w-4xl">
         <div className="text-center">
           {/* 404 Visual */}

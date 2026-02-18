@@ -61,16 +61,6 @@ export function generateSEOMetadata({
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@oakleydye',
-      creator: '@oakleydye',
-      title: fullTitle,
-      description: metaDescription,
-      images: [ogImage],
-    },
-    viewport: 'width=device-width, initial-scale=1',
-    themeColor: '#C73E1D',
     manifest: '/manifest.json',
     icons: {
       icon: [

@@ -70,7 +70,7 @@ const PrivacyPolicy: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-background via-background to-primary/5">
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-16 pb-8 max-w-6xl">
         <div className="text-center mb-12">

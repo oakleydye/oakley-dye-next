@@ -1,141 +1,143 @@
 "use client";
 
 import * as React from "react";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { motion } from "framer-motion";
 import ContactForm from "@/app/_components/contact_form";
-import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+const contactInfo = [
+  {
+    icon: <Mail className="w-5 h-5 text-primary" />,
+    label: "Email",
+    value: "hello@oakleydye.com",
+    href: "mailto:hello@oakleydye.com",
+  },
+  {
+    icon: <Phone className="w-5 h-5 text-primary" />,
+    label: "Phone",
+    value: "(435) 557-1427",
+    href: "tel:+14355571427",
+  },
+  {
+    icon: <MapPin className="w-5 h-5 text-primary" />,
+    label: "Location",
+    value: "Hyrum, UT · Remote",
+    href: null,
+  },
+];
 
 const ContactSection: React.FC = () => {
-  const isMobile = useIsMobile();
-
-  const contactInfo = [
-    {
-      icon: <Mail className="w-5 h-5 text-primary" />,
-      label: "Email",
-      value: "hello@oakleydye.com",
-      href: "mailto:hello@oakleydye.com"
-    },
-    {
-      icon: <Phone className="w-5 h-5 text-primary" />,
-      label: "Phone",
-      value: "(435) 557-1427",
-      href: "tel:+14355571427"
-    },
-    {
-      icon: <MapPin className="w-5 h-5 text-primary" />,
-      label: "Location",
-      value: "Hyrum, UT",
-      href: null
-    }
-  ];
-
   return (
-    <div id="contact" className="container mx-auto mt-32 mb-20 relative max-w-6xl px-4">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <h2
-          className={`${
-            isMobile ? "text-4xl" : "text-6xl"
-          } font-bold mb-6`}
+    <section id="contact" className="section-padding">
+      <div className="container mx-auto max-w-6xl">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          Ready to Get Started?
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Let's discuss your project and how we can help bring your vision to life. 
-          Get in touch for a free consultation.
-        </p>
-      </div>
+          <span className="font-terminal text-sm text-primary mb-4 block">
+            <span className="text-muted-foreground">// </span>contact.ts
+          </span>
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+            Ready to <span className="gradient-text-red">Start?</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Let&apos;s discuss your project. Get in touch for a free consultation.
+          </p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Contact Form */}
-        <div>
-          <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
-          <ContactForm />
-        </div>
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="glass rounded-2xl p-6">
+              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+              <ContactForm />
+            </div>
+          </motion.div>
 
-        {/* Contact Information & CTA */}
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Have questions or ready to start your project? We're here to help. 
-              Reach out through the form or contact us directly using the information below.
-            </p>
-          </div>
+          {/* Contact Info */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Get In Touch</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Have questions? Ready to start? I&apos;m here to help. Reach out directly or use the form.
+              </p>
+            </div>
 
-          {/* Contact Info Cards */}
-          <div className="space-y-4">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full">
+            {/* Contact cards */}
+            <div className="space-y-3">
+              {contactInfo.map((info, i) => (
+                <div key={i} className="glass rounded-xl p-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
                       {info.icon}
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-muted-foreground">{info.label}</p>
+                    <div>
+                      <p className="text-xs text-muted-foreground">{info.label}</p>
                       {info.href ? (
-                        <a 
-                          href={info.href} 
-                          className="text-base font-semibold hover:text-primary transition-colors"
-                        >
+                        <a href={info.href} className="text-sm font-semibold hover:text-primary transition-colors">
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-base font-semibold">{info.value}</p>
+                        <p className="text-sm font-semibold">{info.value}</p>
                       )}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              ))}
+            </div>
 
-          {/* Process Steps */}
-          <Card className="bg-gradient-to-br from-background to-card">
-            <CardContent className="p-6">
-              <h4 className="font-semibold mb-4">What Happens Next?</h4>
+            {/* Process */}
+            <div className="glass rounded-xl p-6">
+              <h4 className="font-semibold mb-4 font-terminal text-sm text-primary">
+                <span className="text-muted-foreground">// </span>what_happens_next[]
+              </h4>
               <div className="space-y-3">
-                <div className="flex items-center text-sm">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">
-                    1
+                {[
+                  "Review your message within 24 hours",
+                  "Schedule a free consultation call",
+                  "Receive a detailed project proposal",
+                ].map((step, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <div className="w-6 h-6 bg-primary/10 border border-primary/20 text-primary rounded-full flex items-center justify-center text-xs font-bold font-terminal flex-shrink-0">
+                      {i + 1}
+                    </div>
+                    <span>{step}</span>
                   </div>
-                  <span>We'll review your message within 24 hours</span>
-                </div>
-                <div className="flex items-center text-sm">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">
-                    2
-                  </div>
-                  <span>Schedule a free consultation call</span>
-                </div>
-                <div className="flex items-center text-sm">
-                  <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0">
-                    3
-                  </div>
-                  <span>Receive a detailed project proposal</span>
-                </div>
+                ))}
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* CTA Button */}
-          <div className="pt-4">
-            <Button 
+            <Button
               asChild
-              variant="outline" 
-              className="w-full h-12 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              variant="outline"
+              className="w-full h-12 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all"
             >
-              <a href="/contact">
-                View Full Contact Page
+              <Link href="/contact">
+                Full Contact Page
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
+              </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

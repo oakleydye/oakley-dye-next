@@ -1,183 +1,113 @@
 "use client";
 
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { Code2 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import * as React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import CustomButton from "./custom_button";
+
+const codeSnippet = `const developer = {
+  name: 'Oakley Dye',
+  title: 'Full-Stack Developer',
+  location: 'Hyrum, UT (Remote)',
+  available: true,
+  skills: [
+    'TypeScript', 'React', 'Next.js',
+    '.NET Core', 'PostgreSQL', 'AWS',
+  ],
+  passions: ['clean code', 'great UX'],
+};`;
 
 const AboutSection: React.FC = () => {
-  const isMobile = useIsMobile();
-
   return (
-    <div className="container mx-auto mt-20 max-w-6xl px-4">
-      <div className="text-center mb-16">
-        <h2
-          className={`${
-            isMobile ? "text-4xl" : "text-5xl lg:text-6xl"
-          } font-bold mb-6`}
-        >
-          About Us
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Where your vision becomes our mission
-        </p>
-      </div>
-
-      <div className="space-y-12">
-        <Card className="bg-gradient-to-br from-background to-card/50">
-          <CardContent className="p-8">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to <span className="font-semibold text-foreground">Oakley Dye Software & Design</span>, where your vision becomes
-              our mission. We are a passionate team of skilled professionals
-              dedicated to bringing your ideas to life through innovative coding,
-              striking web design, creative graphic solutions, and a variety of
-              small business services tailored to your unique needs.
-            </p>
-          </CardContent>
-        </Card>
-
-        <div className="grid gap-8 md:grid-cols-2">
-          <Card className="group hover:shadow-lg transition-all duration-300">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 text-primary">Our Story</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Founded with a vision to make high-quality digital services
-                accessible to businesses of all sizes, Oakley Dye Software & Design
-                has grown from a small startup into a trusted partner for many. Our
-                journey began with a simple yet powerful idea: to combine technical
-                expertise with creative thinking to help businesses thrive in the
-                digital age.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="group hover:shadow-lg transition-all duration-300">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 text-primary">Our Philosophy</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                At Oakley Dye Software & Design, we believe that every project is an
-                opportunity to create something extraordinary. We take the time to
-                understand your goals, challenges, and aspirations, ensuring that
-                our solutions are perfectly aligned with your vision.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div>
-          <h3 className="text-3xl font-bold mb-8 text-center text-primary">Our Services</h3>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start">
-                  <div className="p-3 bg-primary/10 rounded-lg mr-4 flex-shrink-0">
-                    <Code2 className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Custom Coding</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Whether you need a bespoke software solution, an
-                      interactive web application, or complex system integration, our
-                      coding experts are here to turn your requirements into reality.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start">
-                  <div className="p-3 bg-primary/10 rounded-lg mr-4 flex-shrink-0">
-                    <Code2 className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Web Design</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      First impressions matter. Our talented designers
-                      craft visually stunning and user-friendly websites that
-                      captivate your audience and drive engagement.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start">
-                  <div className="p-3 bg-primary/10 rounded-lg mr-4 flex-shrink-0">
-                    <Code2 className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Graphic Design</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Visual storytelling is at the heart of our
-                      graphic design services. We create compelling graphics, logos,
-                      branding materials, and marketing collateral.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start">
-                  <div className="p-3 bg-primary/10 rounded-lg mr-4 flex-shrink-0">
-                    <Code2 className="text-primary" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Small Business Services</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Running a small business can be challenging, but you don't have to do it alone. 
-                      We offer digital marketing, SEO, social media management, and consulting.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <Card className="bg-gradient-to-r from-primary/5 to-secondary/5">
-          <CardContent className="p-10">
-            <h3 className="text-3xl font-bold mb-8 text-center text-primary">Why Choose Us?</h3>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="text-center p-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code2 className="w-6 h-6 text-primary" />
-                </div>
-                <div className="font-semibold text-primary mb-2">Expertise</div>
-                <p className="text-sm text-muted-foreground">Years of experience and diverse skill set</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code2 className="w-6 h-6 text-primary" />
-                </div>
-                <div className="font-semibold text-primary mb-2">Innovation</div>
-                <p className="text-sm text-muted-foreground">Passionate about new solutions</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code2 className="w-6 h-6 text-primary" />
-                </div>
-                <div className="font-semibold text-primary mb-2">Collaboration</div>
-                <p className="text-sm text-muted-foreground">Working closely with our clients</p>
-              </div>
-              <div className="text-center p-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code2 className="w-6 h-6 text-primary" />
-                </div>
-                <div className="font-semibold text-primary mb-2">Quality</div>
-                <p className="text-sm text-muted-foreground">Results that exceed expectations</p>
-              </div>
+    <section className="section-padding">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left: text */}
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div>
+              <span className="font-terminal text-sm text-primary mb-4 block">
+                <span className="text-muted-foreground">// </span>about.ts
+              </span>
+              <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+                Meet <span className="gradient-text-red">Oakley</span>
+              </h2>
             </div>
-          </CardContent>
-        </Card>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I&apos;m a passionate full-stack developer who turns complex problems into elegant digital solutions.
+              From pixel-perfect frontends to scalable backend systems, I bring ideas to life with modern
+              technology and thoughtful design.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Founded on the belief that high-quality software should be accessible to businesses of all sizes,
+              I work directly with clients to understand their goals and deliver solutions that exceed expectations.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <CustomButton asChild>
+                <Link href="/about" className="inline-flex items-center gap-2">
+                  More About Me
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </CustomButton>
+              <CustomButton variant="outline-glow" asChild>
+                <Link href="/resume">View Resume</Link>
+              </CustomButton>
+            </div>
+          </motion.div>
+
+          {/* Right: code snippet panel */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="glass rounded-2xl overflow-hidden border border-glass-border">
+              {/* Terminal bar */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-glass-border bg-white/3">
+                <div className="w-3 h-3 rounded-full bg-red-500 opacity-70" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-70" />
+                <div className="w-3 h-3 rounded-full bg-green-500 opacity-70" />
+                <span className="ml-3 text-xs font-terminal text-muted-foreground">developer.ts</span>
+              </div>
+              {/* Code */}
+              <pre className="p-6 text-sm font-terminal leading-relaxed overflow-x-auto">
+                <code>
+                  {codeSnippet.split('\n').map((line, i) => {
+                    // Simple syntax highlighting via spans
+                    return (
+                      <span key={i} className="block">
+                        {line
+                          .replace(/'/g, '\u2018')
+                          .split(/(\b(?:const|true|false)\b|'[^']*')/)
+                          .map((part, j) => {
+                            if (/^(const|true|false)$/.test(part)) {
+                              return <span key={j} className="text-primary">{part.replace(/\u2018/g, "'")}</span>;
+                            }
+                            if (part.startsWith('\u2018') || part.startsWith("'")) {
+                              return <span key={j} className="text-green-400">{part.replace(/\u2018/g, "'")}</span>;
+                            }
+                            return <span key={j} className="text-muted-foreground">{part.replace(/\u2018/g, "'")}</span>;
+                          })}
+                      </span>
+                    );
+                  })}
+                </code>
+              </pre>
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -89,7 +89,7 @@ const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-background to-card py-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
