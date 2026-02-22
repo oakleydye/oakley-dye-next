@@ -9,8 +9,8 @@ import Link from "next/link";
 const words = ["Expertise", "Innovation", "Creativity", "Solutions", "Quality"];
 
 const stats = [
-  { value: "5+", label: "Projects Delivered" },
-  { value: "3+", label: "Years Experience" },
+  { value: "20+", label: "Projects Delivered" },
+  { value: "8+", label: "Years Experience" },
   { value: "100%", label: "Remote Friendly" },
 ];
 
