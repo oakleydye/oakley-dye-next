@@ -21,7 +21,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { to, subject, html, text } = await request.json();
+    const { to, subject, html, text, _hp, _t } = await request.json();
+
+    // Honeypot check — bots fill hidden fields, humans don't
+    if (_hp) {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    // Timing check — reject submissions under 3 seconds (bots are fast)
+    if (_t) {
+      const elapsed = typeof _t === "number" ? Date.now() - _t : Infinity;
+      if (elapsed < 3000) {
+        return NextResponse.json({ success: true }, { status: 200 });
+      }
+    }
 
     if (!subject || !html) {
       return NextResponse.json(

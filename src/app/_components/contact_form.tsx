@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import * as React from "react";
 import CustomButton from "./custom_button";
 import { toast } from "sonner";
+import { isSpam } from "@/lib/spam_filters";
 
 function createEmailHTML(
   firstName: string,
@@ -86,9 +87,21 @@ const ContactForm: React.FC = () => {
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [message, setMessage] = React.useState("");
+  const [honeypot, setHoneypot] = React.useState("");
+  const [formLoadTime] = React.useState(() => Date.now());
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (firstName.length > 100 || lastName.length > 100 || email.length > 200 || phone.length > 20 || message.length > 5000) {
+      toast.error("Form fields are too long. Please keep all fields under the character limits.");
+      return;
+    }
+
+    if (isSpam(firstName + " " + lastName, email, message)) {
+      toast.success("Email Sent Successfully!");
+      return;
+    }
 
     const html = createEmailHTML(firstName, lastName, email, phone, message);
     const text = `New Contact Form Submission\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\n\nMessage:\n${message}\n\nReceived on: ${new Date().toLocaleString()}`;
@@ -104,6 +117,8 @@ const ContactForm: React.FC = () => {
             subject: `Contact Form Submission from ${firstName} ${lastName}`,
             html,
             text,
+            _hp: honeypot,
+            _t: formLoadTime,
           }),
         });
 
@@ -133,6 +148,19 @@ const ContactForm: React.FC = () => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit} className="m-4 p-4">
+        {/* Honeypot field — hidden from real users, bots fill it in */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0 }} aria-hidden="true">
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </div>
         <div className="flex flex-row gap-2 mb-4">
           <div className="flex-1">
             <Label htmlFor="firstName" className="mb-2 block">
