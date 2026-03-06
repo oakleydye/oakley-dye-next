@@ -3,15 +3,15 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Portfolio - Our Best Software Development Projects",
-  description: "Explore our portfolio of successful web development, custom applications, and business solutions. See how we've helped businesses transform digitally.",
+  title: "Portfolio — Client Projects by Oakley Dye",
+  description: "Browse Oakley Dye's portfolio of live client projects: real estate websites, booking platforms, entertainment sites, and enterprise software solutions built with Next.js and React.",
   keywords: [
-    "portfolio",
-    "web development projects",
-    "custom applications",
-    "client success stories",
-    "software development examples",
-    "case studies",
+    "software development portfolio",
+    "Next.js project examples",
+    "freelance developer work",
+    "web development case studies",
+    "small business websites",
+    "client project showcase",
   ],
   canonicalUrl: "https://oakleydye.com/portfolio",
 });

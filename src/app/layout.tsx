@@ -5,7 +5,7 @@ import Providers from "./providers";
 import Menu from "./_components/menu";
 import Footer from "./_components/footer";
 import GoogleAnalytics from "@/components/google-analytics";
-import { generateSEOMetadata, businessStructuredData } from "@/lib/seo";
+import { generateSEOMetadata, businessStructuredData, personStructuredData } from "@/lib/seo";
 import '@fontsource-variable/jetbrains-mono';
 import '@fontsource-variable/roboto-flex';
 import '@fontsource/pt-sans-narrow';
@@ -57,6 +57,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(businessStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personStructuredData),
           }}
         />
 

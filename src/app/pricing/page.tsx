@@ -1,16 +1,31 @@
 import { PricingPage } from "./components/pricing-page";
-import { generateSEOMetadata } from "@/lib/seo";
+import { generateSEOMetadata, generateFAQStructuredData } from "@/lib/seo";
+import { faqItems } from "@/lib/pricing_data";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Pricing — Transparent Software Development Rates",
-  description: "Clear, honest pricing for web development, custom applications, and consulting services. No hidden fees.",
+  title: "Pricing — Web Development & Consulting Rates",
+  description: "Transparent pricing for custom software development. Starter websites from $1,500. Professional projects from $4,500. Enterprise custom quotes. No hidden fees.",
+  keywords: [
+    "web development pricing",
+    "software development cost",
+    "freelance developer rates",
+    "website design cost",
+    "how much does a website cost",
+    "software project estimate",
+  ],
   canonicalUrl: "https://oakleydye.com/pricing",
 });
 
 export default function Pricing() {
+  const faqSchema = generateFAQStructuredData(faqItems);
+
   return (
     <main className="min-h-screen pt-28 section-padding">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16">

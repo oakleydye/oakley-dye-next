@@ -1,5 +1,5 @@
 import { getPostBySlug, getAllPosts, getRelatedPosts } from "@/lib/blog";
-import { generateSEOMetadata } from "@/lib/seo";
+import { generateSEOMetadata, generateArticleStructuredData } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generateSEOMetadata({
     title: post.title,
     description: post.excerpt,
+    keywords: post.tags,
     canonicalUrl: `https://oakleydye.com/blog/${slug}`,
   });
 }
@@ -32,6 +33,13 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, post.tags);
+  const articleSchema = generateArticleStructuredData({
+    title: post.title,
+    description: post.excerpt,
+    url: `https://oakleydye.com/blog/${slug}`,
+    datePublished: post.date,
+    tags: post.tags,
+  });
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -41,6 +49,10 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Reading progress bar placeholder */}
       <div className="fixed top-0 left-0 right-0 h-0.5 bg-primary z-[100] origin-left" style={{ transform: "scaleX(0)" }} />
 

@@ -9,14 +9,16 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Oakley Dye Software & Design | Custom Software Development",
-  description: "Transform your business with expert software development, modern web design, and strategic consulting. Get innovative solutions tailored to your needs.",
+  title: "Custom Software Development, Web Design & Consulting",
+  description: "Oakley Dye builds custom software, modern websites, and scalable systems for businesses across the US. Based in Hyrum, UT — available remotely. React, Next.js, .NET, and more.",
   keywords: [
-    "homepage",
-    "software development company",
+    "freelance software developer",
+    "custom web development",
     "web design agency",
-    "custom solutions",
-    "digital transformation",
+    "software consultant",
+    "Utah software engineer",
+    "remote developer for hire",
+    "small business web developer",
   ],
   canonicalUrl: "https://oakleydye.com",
 });
