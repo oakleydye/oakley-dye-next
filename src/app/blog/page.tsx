@@ -4,8 +4,16 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Blog — Insights on Software Development & Design",
-  description: "Articles on web development, design systems, and building software that matters.",
+  title: "Blog — Software Development, Design & Technology",
+  description: "Oakley Dye writes about web development, software architecture, UI/UX design, SEO, and AI tooling. Practical insights from 8+ years of professional engineering.",
+  keywords: [
+    "web development blog",
+    "software engineering articles",
+    "Next.js tutorials",
+    "React tips",
+    "developer blog",
+    "tech insights",
+  ],
   canonicalUrl: "https://oakleydye.com/blog",
 });
 

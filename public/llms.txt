@@ -1,0 +1,71 @@
+# Oakley Dye Software & Design
+
+> Oakley Dye is a full-stack software engineer, Engineering Manager, and independent consultant based in Hyrum, Utah. He builds custom web applications, enterprise software systems, and digital solutions for small and medium-sized businesses across the United States. He is available for freelance and consulting engagements remotely.
+
+## About Oakley Dye
+
+Oakley Dye has 8+ years of professional software engineering experience. He currently serves as Engineering Manager at Conservice (a utility management company in Hyrum, UT), leading a team of engineers building scalable software systems. He is also the founder and lead developer of Oakley Dye Software & Design, a software consultancy he founded in 2023.
+
+He specializes in full-stack web development using React, Next.js, TypeScript, .NET Core, PostgreSQL, and cloud platforms (AWS and Azure). He has delivered 20+ custom software projects with a 98% client satisfaction rate.
+
+**Contact:**
+- Email: hello@oakleydye.com
+- Phone: (435) 557-1427
+- Location: Hyrum, UT (serves clients remotely across the US)
+- Website: https://oakleydye.com
+- GitHub: https://github.com/oakleydye
+- LinkedIn: https://linkedin.com/in/oakley-dye
+
+## Services
+
+- [Web Development](https://oakleydye.com/services/web-development): Custom websites and web applications built with Next.js, React, and TypeScript. Responsive, fast-loading, and SEO-optimized. Starting at $1,500 for starter projects.
+- [Custom Applications](https://oakleydye.com/services/custom-applications): Bespoke software including desktop apps, mobile apps, APIs, and full-stack web applications tailored to specific business workflows.
+- [Business Consulting](https://oakleydye.com/services/business-consulting): Technology strategy for small and medium businesses — digital transformation, process automation, tech stack selection, and vendor evaluation.
+- [SEO & Marketing](https://oakleydye.com/services/seo-marketing): Technical SEO audits, content strategy, local SEO, Google Analytics setup, and performance optimization.
+- [System Architecture](https://oakleydye.com/services): Scalable cloud infrastructure, microservices design, CI/CD pipelines, security reviews, and performance tuning.
+
+## Pricing
+
+- Starter: $1,500/project or $500/month — up to 5-page website, responsive design, contact forms, basic SEO
+- Professional: $4,500/project or $1,200/month — unlimited pages, custom CMS, advanced SEO, API integrations, e-commerce, 90-day support
+- Enterprise: Custom quote — full-scale systems, dedicated DevOps, SLA, security audits, team training
+
+## Portfolio (Selected Projects)
+
+- [CD Entertainment](https://cdentertainment.co): DJ and entertainment booking platform. Built with Next.js, .NET Core, PostgreSQL. (2024, Live)
+- [Rosebud Quilting](https://rosebudquilting.com): Artisan quilting showcase with portfolio gallery. Built with Next.js, Tailwind CSS. (2024, Live)
+- [O.R.E. Plumbing](https://www.oreplumbing.com): Local plumbing business site with service booking. Built with Next.js, ShadCN. (2024, Live)
+- [Kristina Eck Real Estate](https://kristinaeckteam.com): Real estate agent portfolio with property listings and custom API integration. Built with Next.js. (2026, Live)
+- [44th Street Tattoo](https://tattoos44thstreet.com): Tattoo studio site with artist portfolios and booking. (2023, Live)
+
+## Key Pages
+
+- [Home](https://oakleydye.com): Overview of services, stats, featured portfolio, and contact
+- [About](https://oakleydye.com/about): Background, mission, values, and professional story
+- [Services](https://oakleydye.com/services): Complete list of software and consulting services
+- [Portfolio](https://oakleydye.com/portfolio): Full showcase of client projects with technology stack details
+- [Pricing](https://oakleydye.com/pricing): Transparent pricing tiers and FAQ
+- [Blog](https://oakleydye.com/blog): Technical articles on web development, design, and AI tooling
+- [Resume](https://oakleydye.com/resume): Full professional history, skills, certifications, and projects
+- [Contact](https://oakleydye.com/contact): Project inquiry form
+
+## Technology Expertise
+
+**Frontend:** React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, CSS3, Vue.js, Angular
+**Backend:** .NET Core, Node.js, Python, Express.js, REST APIs, GraphQL, Microservices
+**Database & Cloud:** PostgreSQL, SQL Server, MongoDB, AWS, Azure, Docker, Kubernetes, CI/CD
+**Other:** Git, Agile/Scrum, SEO, UI/UX Design, Business Strategy
+
+## Frequently Asked Questions
+
+**How long does a typical project take?**
+Starter projects take 2–4 weeks. Professional projects range 4–12 weeks. Enterprise timelines are scoped during discovery.
+
+**What technologies do you use?**
+Primarily Next.js, React, TypeScript, .NET Core, PostgreSQL, and AWS/Vercel. Always recommends the right tool for each project's specific needs.
+
+**Do you work remotely?**
+Yes — fully remote-capable and has served clients across the United States.
+
+**What is the payment structure?**
+50% upfront to secure the project slot, remainder due on completion. Enterprise projects use milestone-based billing.
