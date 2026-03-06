@@ -10,6 +10,7 @@ import '@fontsource-variable/jetbrains-mono';
 import '@fontsource-variable/roboto-flex';
 import '@fontsource/pt-sans-narrow';
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +59,17 @@ export default function RootLayout({
             __html: JSON.stringify(businessStructuredData),
           }}
         />
+
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-845D64HBHE" strategy="afterInteractive" />
+        <Script id="google-analytics-config" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-845D64HBHE');
+          `
+        }} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
