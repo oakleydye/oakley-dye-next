@@ -71,8 +71,10 @@ export function generateSEOMetadata({
         { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       ],
     },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION_CODE,
+    },
     other: {
-      'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION_CODE,
       'msvalidate.01': 'your-bing-verification-code',
     },
   }
