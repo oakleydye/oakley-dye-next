@@ -72,7 +72,7 @@ export function generateSEOMetadata({
       ],
     },
     other: {
-      'google-site-verification': 'your-google-verification-code',
+      'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION_CODE,
       'msvalidate.01': 'your-bing-verification-code',
     },
   }
