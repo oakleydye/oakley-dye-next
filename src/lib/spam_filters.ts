@@ -1,6 +1,6 @@
 const SPAM_KEYWORDS = [
   "casino", "viagra", "cialis", "crypto", "bitcoin", "nft", "seo service",
-  "buy followers", "make money fast", "work from home", "click here", "limited offer",
+  "buy followers", "make money fast", "work from home", "click here", "limited offer", "search terms", "search results", "keywords"
 ];
 
 export function isSpam(name: string, email: string, message: string): boolean {
