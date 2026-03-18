@@ -39,7 +39,6 @@ export async function POST(request: NextRequest) {
     }
 
     if (token) {
-      console.log("Token provided");
       const response = await verifyRecaptcha(token);
       if (!response.success) {
         return NextResponse.json(
@@ -49,15 +48,12 @@ export async function POST(request: NextRequest) {
       }
 
       const minScore = getMinScore();
-      console.log("ReCaptcha score: ", response.score);
       if (response.score !== undefined && response.score < minScore) {
         return NextResponse.json(
           { error: "ReCaptcha verification failed, please try again" },
           { status: 400 }
         );
       }
-    } else {
-      console.log("No token found");
     }
 
     if (!subject || !html) {
