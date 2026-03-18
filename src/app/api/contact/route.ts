@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (token) {
+      console.log("Token provided");
       const response = await verifyRecaptcha(token);
       if (!response.success) {
         return NextResponse.json(
@@ -55,6 +56,8 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
       }
+    } else {
+      console.log("No token found");
     }
 
     if (!subject || !html) {
