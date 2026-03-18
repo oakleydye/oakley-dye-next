@@ -1,3 +1,4 @@
+import { getMinScore, verifyRecaptcha } from "@/lib/recaptcha_verification";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -21,7 +22,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { to, subject, html, text, _hp, _t } = await request.json();
+    const requestBody = await request.json();
+    const { to, subject, html, text, _hp, _t, token } = requestBody;
 
     // Honeypot check — bots fill hidden fields, humans don't
     if (_hp) {
@@ -33,6 +35,25 @@ export async function POST(request: NextRequest) {
       const elapsed = typeof _t === "number" ? Date.now() - _t : Infinity;
       if (elapsed < 3000) {
         return NextResponse.json({ success: true }, { status: 200 });
+      }
+    }
+
+    if (token) {
+      const response = await verifyRecaptcha(token);
+      if (!response.success) {
+        return NextResponse.json(
+          { error: "ReCaptcha verification failed, please try again" },
+          { status: 400 }
+        );
+      }
+
+      const minScore = getMinScore();
+      console.log("ReCaptcha score: ", response.score);
+      if (response.score !== undefined && response.score < minScore) {
+        return NextResponse.json(
+          { error: "ReCaptcha verification failed, please try again" },
+          { status: 400 }
+        );
       }
     }
 

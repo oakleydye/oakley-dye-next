@@ -7,6 +7,8 @@ import * as React from "react";
 import CustomButton from "./custom_button";
 import { toast } from "sonner";
 import { isSpam } from "@/lib/spam_filters";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import Link from "next/link";
 
 function createEmailHTML(
   firstName: string,
@@ -89,6 +91,7 @@ const ContactForm: React.FC = () => {
   const [message, setMessage] = React.useState("");
   const [honeypot, setHoneypot] = React.useState("");
   const [formLoadTime] = React.useState(() => Date.now());
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -107,6 +110,23 @@ const ContactForm: React.FC = () => {
     const text = `New Contact Form Submission\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\n\nMessage:\n${message}\n\nReceived on: ${new Date().toLocaleString()}`;
 
     (async () => {
+      if (!executeRecaptcha) {
+        toast.error("ReCaptcha provider not initialized, please try again");
+      }
+
+      let token:string;
+      try {
+        token = await executeRecaptcha!('form_submit');
+      } catch (error) {
+        toast.error("ReCaptcha validation failed, please try again");
+        return;
+      }
+
+      if (token.trim() === "") {
+        toast.error("Error getting ReCaptcha token, please try again");
+        return;
+      }
+
       try {
         const response = await fetch("/api/contact", {
           method: "POST",
@@ -119,6 +139,7 @@ const ContactForm: React.FC = () => {
             text,
             _hp: honeypot,
             _t: formLoadTime,
+            token
           }),
         });
 
@@ -231,6 +252,11 @@ const ContactForm: React.FC = () => {
           <CustomButton type="submit">Submit</CustomButton>
         </div>
       </form>
+      <div className="text-xs ml-4 -mt-8 text-muted-foreground italic">
+        * This site is protected by reCAPTCHA and the Google&nbsp;
+        <Link href="https://policies.google.com/privacy">Privacy Policy</Link> and&nbsp;
+        <Link href="https://policies.google.com/terms">Terms of Service</Link> apply.
+      </div>
     </React.Fragment>
   );
 };

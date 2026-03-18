@@ -284,3 +284,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(5 89% 45% / 70%);
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
