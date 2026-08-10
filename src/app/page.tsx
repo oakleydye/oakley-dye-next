@@ -10,7 +10,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Custom Software Development, Web Design & Consulting",
-  description: "Oakley Dye builds custom software, modern websites, and scalable systems for businesses across the US. Based in Hyrum, UT — available remotely. React, Next.js, .NET, and more.",
+  description: "Oakley Dye builds custom software, modern websites, and scalable systems for businesses across the US. Based in Hyrum, UT — available remotely.",
   keywords: [
     "freelance software developer",
     "custom web development",
