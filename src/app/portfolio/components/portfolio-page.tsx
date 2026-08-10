@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,6 @@ const PortfolioPage: React.FC = () => {
   const isMobile = useIsMobile();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
 
   const handleImageError = (projectId: number) => {
@@ -38,12 +37,6 @@ const PortfolioPage: React.FC = () => {
            project.image !== "/images/portfolio/placeholder.jpg" && 
            !imageErrors.has(project.id);
   };
-
-  useEffect(() => {
-    // Simulate loading for smooth animation
-    const timer = setTimeout(() => setIsLoading(false), 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   const filteredProjects = portfolioData.filter(
     (project) => selectedCategory === "All" || project.category === selectedCategory
@@ -154,14 +147,6 @@ const PortfolioPage: React.FC = () => {
       </div>
     </div>
   );
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-br from-background via-background to-primary/5">
