@@ -109,7 +109,8 @@ export default async function BlogPostPage({ params }: Props) {
               return <h2 key={i} className="text-3xl font-bold mt-10 mb-4">{line.slice(3)}</h2>;
             }
             if (line.startsWith('# ')) {
-              return <h1 key={i} className="text-4xl font-bold mt-12 mb-6">{line.slice(2)}</h1>;
+              // h2, not h1 — the post title above is already this page's h1.
+              return <h2 key={i} className="text-4xl font-bold mt-12 mb-6">{line.slice(2)}</h2>;
             }
             if (line.startsWith('```')) {
               return null; // handled below
