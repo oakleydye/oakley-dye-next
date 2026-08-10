@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "cloud architecture consulting",
     "Next.js development service",
   ],
-  canonicalUrl: "https://oakleydye.com/services",
+  canonicalUrl: "https://www.oakleydye.com/services",
 });
 
 const Services: React.FC = () => {

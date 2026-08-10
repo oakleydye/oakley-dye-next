@@ -25,9 +25,10 @@ export function generateSEOMetadata({
 
   const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle
   const metaDescription = description || baseDescription
-  const baseUrl = 'https://oakleydye.com'
+  const baseUrl = 'https://www.oakleydye.com'
 
   const metadata: Metadata = {
+    metadataBase: new URL(baseUrl),
     title: fullTitle,
     description: metaDescription,
     keywords: [
@@ -43,7 +44,7 @@ export function generateSEOMetadata({
       'Utah software engineer',
       ...keywords,
     ],
-    authors: [{ name: 'Oakley Dye', url: 'https://oakleydye.com' }],
+    authors: [{ name: 'Oakley Dye', url: 'https://www.oakleydye.com' }],
     creator: 'Oakley Dye',
     publisher: 'Oakley Dye Software & Design',
     robots: noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -115,16 +116,16 @@ export const businessStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Oakley Dye Software & Design',
-  url: 'https://oakleydye.com',
-  logo: 'https://oakleydye.com/logo.webp',
-  image: 'https://oakleydye.com/images/hero.webp',
+  url: 'https://www.oakleydye.com',
+  logo: 'https://www.oakleydye.com/logo.webp',
+  image: 'https://www.oakleydye.com/images/hero.webp',
   description:
     'Custom software development, web design, and business consulting services for small and medium-sized businesses across the United States.',
   founder: {
     '@type': 'Person',
     name: 'Oakley Dye',
     jobTitle: 'Full-Stack Software Engineer & Business Consultant',
-    url: 'https://oakleydye.com',
+    url: 'https://www.oakleydye.com',
     sameAs: [
       'https://github.com/oakleydye',
       'https://linkedin.com/in/oakley-dye',
@@ -231,8 +232,8 @@ export const personStructuredData = {
   jobTitle: 'Full-Stack Software Engineer & Business Consultant',
   description:
     'Full-stack software engineer with 8+ years of experience building scalable web applications. Founder of Oakley Dye Software & Design. Engineering Manager at Conservice. Specializes in React, Next.js, .NET Core, and cloud architecture.',
-  url: 'https://oakleydye.com',
-  image: 'https://oakleydye.com/images/hero.webp',
+  url: 'https://www.oakleydye.com',
+  image: 'https://www.oakleydye.com/images/hero.webp',
   email: 'hello@oakleydye.com',
   telephone: '+14355571427',
   address: {
@@ -268,7 +269,7 @@ export const personStructuredData = {
   founder: {
     '@type': 'Organization',
     name: 'Oakley Dye Software & Design',
-    url: 'https://oakleydye.com',
+    url: 'https://www.oakleydye.com',
   },
   alumniOf: [
     {
@@ -308,24 +309,24 @@ export function generateArticleStructuredData({
     author: {
       '@type': 'Person',
       name: 'Oakley Dye',
-      url: 'https://oakleydye.com',
+      url: 'https://www.oakleydye.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Oakley Dye Software & Design',
-      url: 'https://oakleydye.com',
+      url: 'https://www.oakleydye.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://oakleydye.com/logo.webp',
+        url: 'https://www.oakleydye.com/logo.webp',
       },
     },
-    image: 'https://oakleydye.com/og-image.jpg',
+    image: 'https://www.oakleydye.com/og-image.jpg',
     keywords: tags.join(', '),
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'Blog',
       name: 'Oakley Dye Blog',
-      url: 'https://oakleydye.com/blog',
+      url: 'https://www.oakleydye.com/blog',
     },
   }
 }

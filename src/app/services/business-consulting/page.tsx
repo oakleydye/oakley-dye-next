@@ -13,7 +13,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "process optimization",
     "technology solutions",
   ],
-  canonicalUrl: "https://oakleydye.com/services/business-consulting",
+  canonicalUrl: "https://www.oakleydye.com/services/business-consulting",
 });
 
 const BusinessConsulting: React.FC = () => {

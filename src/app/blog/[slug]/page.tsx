@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     keywords: post.tags,
-    canonicalUrl: `https://oakleydye.com/blog/${slug}`,
+    canonicalUrl: `https://www.oakleydye.com/blog/${slug}`,
   });
 }
 
@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: Props) {
   const articleSchema = generateArticleStructuredData({
     title: post.title,
     description: post.excerpt,
-    url: `https://oakleydye.com/blog/${slug}`,
+    url: `https://www.oakleydye.com/blog/${slug}`,
     datePublished: post.date,
     tags: post.tags,
   });

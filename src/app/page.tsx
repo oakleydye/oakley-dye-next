@@ -20,7 +20,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "remote developer for hire",
     "small business web developer",
   ],
-  canonicalUrl: "https://oakleydye.com",
+  canonicalUrl: "https://www.oakleydye.com",
 });
 
 const Homepage: React.FC = () => {

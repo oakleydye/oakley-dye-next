@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "developer blog",
     "tech insights",
   ],
-  canonicalUrl: "https://oakleydye.com/blog",
+  canonicalUrl: "https://www.oakleydye.com/blog",
 });
 
 export default function BlogPage() {

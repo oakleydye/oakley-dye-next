@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "local SEO",
     "keyword optimization",
   ],
-  canonicalUrl: "https://oakleydye.com/services/seo-marketing",
+  canonicalUrl: "https://www.oakleydye.com/services/seo-marketing",
 });
 
 const SEOMarketing: React.FC = () => {

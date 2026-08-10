@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://oakleydye.com'
+  const baseUrl = 'https://www.oakleydye.com'
   const currentDate = new Date().toISOString()
 
   // Blog posts

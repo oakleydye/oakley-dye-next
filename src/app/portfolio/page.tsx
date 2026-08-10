@@ -13,7 +13,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "small business websites",
     "client project showcase",
   ],
-  canonicalUrl: "https://oakleydye.com/portfolio",
+  canonicalUrl: "https://www.oakleydye.com/portfolio",
 });
 
 const Portfolio: React.FC = () => {

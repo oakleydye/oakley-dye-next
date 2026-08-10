@@ -9,7 +9,7 @@ export const metadata: Metadata = generateSEOMetadata({
   title: "Privacy Policy - Data Protection & Privacy Practices",
   description: "Learn about our privacy practices, data collection, and how we protect your personal information at Oakley Dye Software & Design.",
   noIndex: false,
-  canonicalUrl: "https://oakleydye.com/privacy",
+  canonicalUrl: "https://www.oakleydye.com/privacy",
 });
 
 const PrivacyPolicy: React.FC = () => {

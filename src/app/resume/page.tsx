@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     ".NET developer resume",
   ],
   noIndex: false,
-  canonicalUrl: "https://oakleydye.com/resume",
+  canonicalUrl: "https://www.oakleydye.com/resume",
 });
 
 const ResumePage: React.FC = () => {
