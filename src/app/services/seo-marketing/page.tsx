@@ -3,7 +3,7 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "SEO & Digital Marketing Services - Increase Online Visibility",
+  title: "SEO & Digital Marketing Services",
   description: "Professional SEO and digital marketing services to boost your online presence, drive traffic, and increase conversions for your business.",
   keywords: [
     "SEO services",

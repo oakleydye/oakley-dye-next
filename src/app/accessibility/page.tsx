@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Accessibility Statement - Inclusive Design & Web Accessibility",
+  title: "Accessibility Statement",
   description: "Learn about our commitment to web accessibility and how we ensure our website is usable by everyone, regardless of ability or technology used.",
   noIndex: false,
   canonicalUrl: "https://www.oakleydye.com/accessibility",

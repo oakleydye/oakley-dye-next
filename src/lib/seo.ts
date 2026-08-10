@@ -23,7 +23,8 @@ export function generateSEOMetadata({
   const baseDescription =
     'Oakley Dye is a full-stack software engineer and consultant based in Hyrum, UT. He builds custom web apps, software systems, and digital solutions for businesses across the US using React, Next.js, .NET, and more.'
 
-  const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle
+  // Short suffix: the full brand name costs 31 chars of a ~60-char SERP title.
+  const fullTitle = title ? `${title} | Oakley Dye` : baseTitle
   const metaDescription = description || baseDescription
   const baseUrl = 'https://www.oakleydye.com'
 
