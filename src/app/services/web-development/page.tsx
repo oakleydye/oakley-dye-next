@@ -3,7 +3,7 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Web Development Services - Custom Websites & Applications",
+  title: "Web Development Services - Custom Websites & Apps",
   description: "Professional web development services using modern technologies. Custom websites, responsive design, e-commerce solutions, and web applications.",
   keywords: [
     "web development",

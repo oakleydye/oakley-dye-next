@@ -3,7 +3,7 @@ import { generateSEOMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Business Consulting - Technology Strategy & Digital Transformation",
+  title: "Business Consulting - Technology Strategy",
   description: "Strategic business consulting services focused on technology solutions, digital transformation, and operational efficiency improvements.",
   keywords: [
     "business consulting",
