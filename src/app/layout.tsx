@@ -42,7 +42,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "small business software",
     "remote development services"
   ],
-  canonicalUrl: "https://oakleydye.com",
+  canonicalUrl: "https://www.oakleydye.com",
 });
 
 export default function RootLayout({

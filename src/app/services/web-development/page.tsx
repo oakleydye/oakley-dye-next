@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "e-commerce development",
     "web applications",
   ],
-  canonicalUrl: "https://oakleydye.com/services/web-development",
+  canonicalUrl: "https://www.oakleydye.com/services/web-development",
 });
 
 const WebDevelopment: React.FC = () => {

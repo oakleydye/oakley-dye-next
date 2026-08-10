@@ -12,7 +12,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "project inquiry",
     "business contact",
   ],
-  canonicalUrl: "https://oakleydye.com/contact",
+  canonicalUrl: "https://www.oakleydye.com/contact",
 });
 
 const Contact: React.FC = () => {

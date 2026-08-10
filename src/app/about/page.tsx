@@ -13,7 +13,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "engineering manager",
     "web developer background",
   ],
-  canonicalUrl: "https://oakleydye.com/about",
+  canonicalUrl: "https://www.oakleydye.com/about",
 });
 
 const About: React.FC = () => {

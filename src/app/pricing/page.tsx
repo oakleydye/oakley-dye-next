@@ -14,7 +14,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "how much does a website cost",
     "software project estimate",
   ],
-  canonicalUrl: "https://oakleydye.com/pricing",
+  canonicalUrl: "https://www.oakleydye.com/pricing",
 });
 
 export default function Pricing() {

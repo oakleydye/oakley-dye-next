@@ -9,7 +9,7 @@ export const metadata: Metadata = generateSEOMetadata({
   title: "Terms of Service - Service Agreement & Terms",
   description: "Read our terms of service and service agreement for Oakley Dye Software & Design services and website usage.",
   noIndex: false,
-  canonicalUrl: "https://oakleydye.com/terms",
+  canonicalUrl: "https://www.oakleydye.com/terms",
 });
 
 const TermsOfService: React.FC = () => {

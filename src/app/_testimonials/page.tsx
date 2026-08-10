@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = generateSEOMetadata({
   title: "Client Testimonials & Case Studies",
   description: "Real feedback from real clients. See how Oakley Dye has helped businesses transform their digital presence.",
-  canonicalUrl: "https://oakleydye.com/testimonials",
+  canonicalUrl: "https://www.oakleydye.com/testimonials",
 });
 
 export default function Testimonials() {

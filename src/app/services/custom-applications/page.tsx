@@ -13,7 +13,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "enterprise solutions",
     "scalable software",
   ],
-  canonicalUrl: "https://oakleydye.com/services/custom-applications",
+  canonicalUrl: "https://www.oakleydye.com/services/custom-applications",
 });
 
 const CustomApplications: React.FC = () => {

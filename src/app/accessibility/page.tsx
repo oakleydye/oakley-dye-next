@@ -20,7 +20,7 @@ export const metadata: Metadata = generateSEOMetadata({
   title: "Accessibility Statement - Inclusive Design & Web Accessibility",
   description: "Learn about our commitment to web accessibility and how we ensure our website is usable by everyone, regardless of ability or technology used.",
   noIndex: false,
-  canonicalUrl: "https://oakleydye.com/accessibility",
+  canonicalUrl: "https://www.oakleydye.com/accessibility",
 });
 
 const AccessibilityPage: React.FC = () => {
