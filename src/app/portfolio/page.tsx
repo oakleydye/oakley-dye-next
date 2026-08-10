@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Portfolio — Client Projects by Oakley Dye",
-  description: "Browse Oakley Dye's portfolio of live client projects: real estate websites, booking platforms, entertainment sites, and enterprise software solutions built with Next.js and React.",
+  description: "Live client projects by Oakley Dye: real estate websites, booking platforms, entertainment sites, and enterprise software built with Next.js and React.",
   keywords: [
     "software development portfolio",
     "Next.js project examples",
