@@ -4,10 +4,8 @@ import "./globals.css";
 import Providers from "./providers";
 import Menu from "./_components/menu";
 import Footer from "./_components/footer";
-import GoogleAnalytics from "@/components/google-analytics";
 import { generateSEOMetadata, businessStructuredData, personStructuredData } from "@/lib/seo";
 import '@fontsource-variable/jetbrains-mono';
-import '@fontsource-variable/roboto-flex';
 import '@fontsource/pt-sans-narrow';
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script";
@@ -81,7 +79,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Analytics />
-        <GoogleAnalytics />
         <Providers>
           <Menu />
           <main>{children}</main>
