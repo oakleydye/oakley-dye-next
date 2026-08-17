@@ -7,8 +7,6 @@ author: "Oakley Dye"
 featured: true
 ---
 
-# GEO: How to Optimize Your Website for AI-Powered Search
-
 Search is changing. More people are asking ChatGPT "who's a good web developer in Utah?" instead of typing it into Google. If your business isn't structured to appear in AI-generated answers, you're invisible to a growing slice of your market.
 
 This is the gap between traditional SEO and what I call **Generative Engine Optimization (GEO)** — optimizing your content to be surfaced and recommended by AI models, not just ranked in search results.
