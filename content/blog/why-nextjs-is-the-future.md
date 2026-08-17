@@ -7,8 +7,6 @@ author: "Oakley Dye"
 featured: true
 ---
 
-# Why Next.js 15 Is the Future of Web Development
-
 Next.js has been my framework of choice for years, and version 15 solidifies its position as the gold standard for modern web development. Here's why.
 
 ## Server Components Change Everything

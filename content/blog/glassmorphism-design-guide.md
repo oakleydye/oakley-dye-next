@@ -6,8 +6,6 @@ tags: ["CSS", "Design", "UI/UX", "Performance"]
 author: "Oakley Dye"
 ---
 
-# Glassmorphism: A Practical Guide for Developers
-
 Glassmorphism is one of those design trends that looks incredible when done right — and terrible when done wrong. Here's how to implement it properly.
 
 ## The Core Properties
