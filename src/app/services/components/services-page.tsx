@@ -19,6 +19,15 @@ import {
 import Link from "next/link";
 import * as React from "react";
 
+// Only these slugs have a detail page under src/app/services/. Rendering a
+// "Learn More" link for the others sends users and crawlers to a 404.
+const servicesWithPages = new Set([
+  "web-development",
+  "custom-applications",
+  "business-consulting",
+  "seo-marketing",
+]);
+
 const ServicesPage: React.FC = () => {
   const isMobile = useIsMobile();
 
@@ -126,13 +135,15 @@ const ServicesPage: React.FC = () => {
                   ))}
                 </div>
                 
-                <div className="text-center">
-                  <Link href={`/services/${service.slug}`}>
-                    <Button variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      Learn More
-                    </Button>
-                  </Link>
-                </div>
+                {servicesWithPages.has(service.slug) && (
+                  <div className="text-center">
+                    <Link href={`/services/${service.slug}`}>
+                      <Button variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
